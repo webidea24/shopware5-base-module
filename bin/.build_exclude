@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+build
+build.sh
+.release_exclude
+.DS_Store
+vendor
+bin

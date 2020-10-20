@@ -5,13 +5,16 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Frederik Rommel",
-      "email": "frederik.rommel@webidea24.de",
+      "name": "WEBiDEA",
+      "email": "info@webidea24.de",
       "homepage": "https://www.webidea24.de",
       "role": "Developer"
     }
   ],
   "type": "shopware-plugin",
+  "extra": {
+    "installer-name": "Webidea24CorePlugin"
+  },
   "require": {
     "php": "^5.6"
   }

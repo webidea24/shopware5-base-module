@@ -1,4 +1,11 @@
 <?php
+/**
+ * Copyright (c) 2020 WEBiDEA
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Webidea24CorePlugin\Bootstrap;
 
 
@@ -15,9 +22,9 @@ abstract class AbstractAttributeBootstrap extends AbstractBootstrap
     /**
      * @return array
      */
-    protected abstract function getTables();
+    abstract protected function getTables();
 
-    public final function install()
+    final public function install()
     {
         $this->installAttributes();
         $this->cleanUp();
@@ -29,9 +36,9 @@ abstract class AbstractAttributeBootstrap extends AbstractBootstrap
         $this->cleanUp();
     }
 
-    public final function uninstall($keepUserData = false)
+    final public function uninstall($keepUserData = false)
     {
-        if($keepUserData === false) {
+        if ($keepUserData === false) {
             $this->uninstallAttributes();
             $this->cleanUp();
         }
@@ -50,8 +57,9 @@ abstract class AbstractAttributeBootstrap extends AbstractBootstrap
         $this->modelManager->generateAttributeModels($this->getTables());
     }
 
-    protected abstract function installAttributes();
-    protected abstract function uninstallAttributes();
+    abstract protected function installAttributes();
+
+    abstract protected function uninstallAttributes();
 
     public function activate()
     {
