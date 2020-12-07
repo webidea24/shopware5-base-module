@@ -1,7 +1,6 @@
 {
   "name": "webidea24/shopware5-base-plugin",
   "description": "Base Plugin for Shopware 5 Plugins",
-  "version": "1.0.0",
   "license": "MIT",
   "authors": [
     {
@@ -14,8 +13,5 @@
   "type": "shopware-plugin",
   "extra": {
     "installer-name": "Webidea24CorePlugin"
-  },
-  "require": {
-    "php": "^5.6"
   }
 }
