@@ -15,6 +15,8 @@ use Webidea24CorePlugin\Bootstrap\AbstractBootstrap;
 
 class Webidea24CorePlugin extends Plugin
 {
+    protected $cacheList = Plugin\Context\InstallContext::CACHE_LIST_ALL;
+    
     public function install(Plugin\Context\InstallContext $context)
     {
         $instances = $this->getBootstrapInstances($context);
@@ -27,7 +29,6 @@ class Webidea24CorePlugin extends Plugin
         foreach ($instances as $bootstrap) {
             $bootstrap->postInstall();
         }
-        parent::install($context);
     }
 
     public function update(Plugin\Context\UpdateContext $context)
@@ -42,7 +43,6 @@ class Webidea24CorePlugin extends Plugin
         foreach ($instances as $bootstrap) {
             $bootstrap->postUpdate();
         }
-        parent::update($context);
         $this->clearCache($context);
     }
 
@@ -58,8 +58,6 @@ class Webidea24CorePlugin extends Plugin
         foreach ($instances as $bootstrap) {
             $bootstrap->postUninstall();
         }
-        parent::uninstall($context);
-        $this->clearCache($context);
     }
 
     public function deactivate(Plugin\Context\DeactivateContext $context)
@@ -74,8 +72,6 @@ class Webidea24CorePlugin extends Plugin
         foreach ($instances as $bootstrap) {
             $bootstrap->postDeactivate();
         }
-        parent::deactivate($context);
-        $this->clearCache($context);
     }
 
     public function activate(Plugin\Context\ActivateContext $context)
@@ -90,13 +86,12 @@ class Webidea24CorePlugin extends Plugin
         foreach ($instances as $bootstrap) {
             $bootstrap->postActivate();
         }
-        parent::activate($context);
         $this->clearCache($context);
     }
 
     protected function clearCache(Plugin\Context\InstallContext $context)
     {
-        $context->scheduleClearCache($context::CACHE_LIST_ALL);
+        $context->scheduleClearCache($this->cacheList);
     }
 
     /**
